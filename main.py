@@ -63,7 +63,7 @@ def run():
                 batched_images_stack.pop()
 
     # once all stackings are completed, start prediction task
-    prediction_actor.predict.remote()
+    predicted = ray.get(prediction_actor.predict.remote())
 
 if __name__ == "__main__":
     run()
